@@ -1,0 +1,394 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- META TAGS -->
+  <meta name="description" content="SXBTEAMS - export va importni qo'llab-quvvatlash">
+  <meta name="keywords"
+    content="SXBTEAMS.uz, qovun, tarvuz, ko'mir, SXBTEAMS, export, экспорт, import, импорт, oziq-ovqat, xom-ashyo, фрукты, овощи, qurilish, goods, products">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://SXBTEAMS.uz">
+  <meta property="og:title" content="SXBTEAMS">
+  <meta property="og:description" content="SXBTEAMS - export va importni qo'llab-quvvatlash">
+  {% for image in main_images %}
+  <meta property="og:image" content="{{ image.Image.url }}">
+  {% endfor %}
+  <title>SXBTEAMS</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'img/logo11.png' %}">
+
+  <!-- FONTAWESOME CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- BOOTSTRAP CSS -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+  <!-- OWL CAROUSEL CSS -->
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+  <!-- SWEETALERT2 CSS -->
+  <link rel="stylesheet" href="{% static 'css/sweetalert2.min.css' %}">
+
+
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <style>
+    .lan_active {
+      font-weight: 600;
+    }
+    .header__theme {
+      transform: translateX(-30%);
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header py-1">
+  <div class="container">
+    <div class="header__top">
+      {% comment %} <marquee class="mb-1">
+        O'zbekiston Respublikasi Markaziy banki tomonidan belgilangan so'mga xorijiy valyuta kurslari 2022-09-09 USD =
+        10937.14 (26.13) EUR = 11154.79 (-82.46) RUB = 178.2 (-0.74) GBP = 13196.75 (-56.85) JPY = 81.97 (0.22) CHF =
+        11571.24 (-7.89) CNY = 1615.51 (-3.45)
+      </marquee> {% endcomment %}
+    </div>
+    <div class="header__middle d-flex justify-content-end mt-3">
+      <div class="row align-items-center gap-2">
+        <div class="col">
+          <div class="header__func d-flex gap-4 align-items-center">
+            <div class="header__func-item" id="visual-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <div class="header__theme px-3 py-2 rounded" style="display: none;">
+              <div class="header__theme-item mb-2">
+                <p class="header__theme-label mb-1">{% if language == 'uz' %}Ko'rinish:{% elif language == 'en' %}View:{% else %}Вид:{% endif %}</p>
+                <ul class="list-group m-0">
+                  <li class="list-group-item border-0 p-1">
+                    <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio"
+                      checked>
+                    <label class="form-check-label" for="firstRadio">{% if language == 'uz' %}Normal{% elif language == 'en' %}Normal{% else %}Обычный{% endif %}</label>
+                  </li>
+                  <li class="list-group-item border-0 p-1">
+                    <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
+                    <label class="form-check-label" for="secondRadio">{% if language == 'uz' %}Oq-qora{% elif language == 'en' %}Black and white{% else %}Черное и белое{% endif %}</label>
+                  </li>
+                </ul>
+              </div>
+              <div class="header__theme-item">
+                <p class="header__theme-label mb-2">{% if language == 'uz' %}Shrift o'lchami:{% elif language == 'en' %}Font size:{% else %}Размер шрифта:{% endif %}</p>
+                <ul class="header__font d-flex gap-4 ps-2">
+                  <li class="header__font-item header__font-minus badge text-center p-0 btn btn-secondary">A-</li>
+                  <li class="header__font-item header__font-default badge text-center p-0 btn btn-secondary">A</li>
+                  <li class="header__font-item header__font-plus badge text-center p-0 btn btn-secondary">A+</li>
+                </ul>
+              </div>
+            </div>
+            <div class="header__func-item d-none d-sm-block" id="mobile-icon"><i class="fas fa-mobile-screen"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+            <ul class="header__lang d-flex gap-3">
+              <a style="font-size:16px" {% if language == 'uz' %} class="lan_active" {% endif %} href="{% url 'set_language' id=1  %}">Uz</a>
+              <a style="font-size:16px" {% if language == 'ru' %} class="lan_active" {% endif %} href="{% url 'set_language' id=2  %}">Ru</a>
+              <a style="font-size:16px" {% if language == 'en' %} class="lan_active" {% endif %} href="{% url 'set_language' id=3  %}">En</a>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg bg-light py-0">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'index' %}">
+        <img src="{% static 'img/logo11.png' %}" alt="site-logo" class="navbar__logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle txt-color1" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              {% if language == 'uz' %}Biz haqimizda{% elif language == 'en' %}About Us{% else %}О нас{% endif %}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'about_us' %}">{% if language == 'uz' %}Biz haqimizda{% elif language == 'en' %}About Us{% else %}О нас{% endif %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'works' %}">{% if language == 'uz' %}Bo'sh ish o'rinlari{% elif language == 'en' %}Vacancies{% else %}Вакансия{% endif %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'employee' %}">{% if language == 'uz' %}Tashkilot boshqaruvi{% elif language == 'en' %}Organization management{% else %}Управление организацией{% endif %}</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle txt-color1" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              {% if language == 'uz' %}Import{% elif language == 'en' %}Import{% else %}Импорт{% endif %}
+            </a>
+            {% if products_c_1 %}
+              <ul class="dropdown-menu">
+                {% for product_c_1 in products_c_1 %}
+                  {% if product_c_1.Type_of_product == 'I' %}
+                  <li><a class="dropdown-item" href="{% url 'products' id=product_c_1.id %}">{{ product_c_1.Name }}</a></li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle txt-color1" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              {% if language == 'uz' %}Eksport{% elif language == 'en' %}Export{% else %}Экспорт{% endif %}
+            </a>
+            {% if products_c_1 %}
+              <ul class="dropdown-menu">
+                {% for product_c_1 in products_c_1 %}
+                {% if product_c_1.Type_of_product == 'E' %}
+                <li><a class="dropdown-item" href="{% url 'products' id=product_c_1.id %}">{{ product_c_1.Name }}</a></li>
+                {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle txt-color1" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              {% if language == 'uz' %}Xizmatlar{% elif language == 'en' %}Services{% else %}Услуги{% endif %}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'services' id=1 %}">{% if language == 'uz' %}Eksport{% elif language == 'en' %}Export{% else %}Экспорт{% endif %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'services' id=2 %}">{% if language == 'uz' %}Import{% elif language == 'en' %}Import{% else %}Импорт{% endif %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'services' id=3 %}">{% if language == 'uz' %}Bojxona rasmiylashtiruvi{% elif language == 'en' %}Customs clearance{% else %}Таможенное оформление{% endif %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'services' id=4 %}">{% if language == 'uz' %}Autsorsing{% elif language == 'en' %}Outsourcing{% else %}Аутсорсинг{% endif %}</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle txt-color1" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              {% if language == 'uz' %}Press{% elif language == 'en' %}Press{% else %}Информация{% endif %}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'news' %}">{% if language == 'uz' %}Yangiliklar{% elif language == 'en' %}News{% else %}Новости{% endif %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'press_center_1' %}">{% if language == 'uz' %}Matbuot markazi{% elif language == 'en' %}Press center{% else %}Пресс-центр{% endif %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'press_center_2' %}">{% if language == 'uz' %}Ko'rgazmalar{% elif language == 'en' %}Exhibitions{% else %}Выставки{% endif %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'photo_gallery' %}">{% if language == 'uz' %}Fotogalereya{% elif language == 'en' %}Photo gallery{% else %}Фотогалерея{% endif %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'video_gallery' %}">{% if language == 'uz' %}Videogalereya{% elif language == 'en' %}Video gallery{% else %}Видео галерея{% endif %}</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle txt-color1" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              {% if language == 'uz' %}Murojaat{% elif language == 'en' %}Appeal{% else %}Обращаться{% endif %}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'feedback' %}">{% if language == 'uz' %}Yur-jis shaxslar murojaati{% elif language == 'en' %}Appeal of natural persons{% else %}Обращение физических лиц{% endif %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'corruption' %}">{% if language == 'uz' %}Korrupsiya haqida fikrlar{% elif language == 'en' %}Thoughts on corruption{% else %}Мысли о коррупции{% endif %}</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link txt-color1" href="{% url 'contact' %}">{% if language == 'uz' %}Aloqa{% elif language == 'en' %}Contacts{% else %}Контакты{% endif %}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- /HEADER -->
+
+{% if messages %}
+        <div class="container">
+          {% for message in messages %}
+          <div class="short_message my_message_{{ message.tags }} alert alert-success" role="alert">
+            {{ message }}
+          </div>
+          {% endfor %}
+        </div>
+<script>
+    setTimeout(function () {
+        for (let x of document.getElementsByClassName('short_message')) {
+            x.style.display = 'none';
+        }
+    }, 3000);
+</script>
+{% endif %}
+
+{% block content %}
+
+{% endblock content %}
+<!-- LEAVE MESSAGE -->
+<section class="message py-3 py-md-5 bg-gray">
+  <div class="container">
+    <h1 class="section-title text-center">{% if language == 'uz' %}Xabar qoldirish{% elif language == 'en' %}Leave a message{% else %}Оставить сообщение{% endif %}</h1>
+    <div class="line"></div>
+    <form action="{% url 'message' %}" method="POST" class="message__form">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.path }}">
+      <div class="row g-3">
+        <div class="col col-12 col-md-6">
+          <div class="row g-3">
+            <div class="col col-12">
+              <input class="message__form-input" type="text" name="name" placeholder="{% if language == 'uz' %}Ism{% elif language == 'en' %}Name{% else %}Имя{% endif %}" required>
+            </div>
+            <div class="col col-12">
+              <input class="message__form-input" type="email" name="email" placeholder="{% if language == 'uz' %}Elektron pochta{% elif language == 'en' %}Email{% else %}Эл. адрес{% endif %}" required>
+            </div>
+          </div>
+        </div>
+        <div class="col col-12 col-md-6">
+          <textarea class="message__form-input" name="message" rows="5" placeholder="{% if language == 'uz' %}Xabar{% elif language == 'en' %}Message{% else %}Сообщение{% endif %}"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-12 text-center">
+          <button class="link-btn btn btn-dark my-3" type="submit">{% if language == 'uz' %}Yuborish{% elif language == 'en' %}Sending{% else %}Отправка{% endif %} <img src="{% static 'img/arrow.png' %}"
+              alt="arrow"></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+<!-- /LEAVE MESSAGE -->
+
+<!-- PARTNERS -->
+{% if hamkorlar %}
+  <section class="partners py-3 py-md-5">
+    <div class="container">
+      <h1 class="section-title text-center">{% if language == 'uz' %}Hamkorlarimiz{% elif language == 'en' %}Our partners{% else %}Наши партнеры{% endif %}</h1>
+      <div class="line"></div>
+      <div class="partners__carousel owl-carousel owl-theme mb-2">
+            {% for hamkor in hamkorlar %}
+              <a href="{{ hamkor.Urls }}" target="_blank" class="partners__item">
+                <div class="partners__item-imgBx">
+                  <img src="{{ MEDIA_URL }}{{ hamkor.Image.url }}" style="max-width: 100px; max-height: 100px;" alt="partner-img">
+                </div>
+              </a>
+              {% endfor %}
+          </div>
+    </div>
+  </section>
+{% endif %}
+<!-- /PARTNERS -->
+
+<!-- FOOTER -->
+<footer class="footer py-3 pt-md-5">
+  <div class="container">
+    <div class="footer__main pb-2">
+      <div class="row g-3">
+        <div class="col col-12 col-sm-6 col-md">
+          <a class="footer-brand mb-3" href="{% url 'index' %}">
+            <img src="{% static 'img/logo11.png' %}" alt="site-logo">
+          </a>
+          <a href="#" class="nav-link text-uppercase my-2">{% if language == 'uz' %}Biz haqimizda{% elif language == 'en' %}About Us{% else %}O нас{% endif %}</a>
+          <a href="#" class="nav-link text-uppercase my-2">{% if language == 'uz' %}Press{% elif language == 'en' %}Press{% else %}Информация{% endif %}</a>
+          <a href="#" class="nav-link text-uppercase my-2">{% if language == 'uz' %}Savollar{% elif language == 'en' %}Questions{% else %}Вопросы{% endif %}</a>
+          <a href="#" class="nav-link text-uppercase my-2">{% if language == 'uz' %}Bog'lanish{% elif language == 'en' %}Connection{% else %}Связь{% endif %}</a>
+        </div>
+        <div class="col col-12 col-sm-6 col-md">
+          <h6 class="nav-link text-uppercase mb-3">{% if language == 'uz' %}Biz haqimizda{% elif language == 'en' %}About Us{% else %}O нас{% endif %}</h6>
+          <a href="{% url 'about_us' %}" class="nav-link my-2 text-capitalize">{% if language == 'uz' %}Biz haqimizda{% elif language == 'en' %}About Us{% else %}O нас{% endif %}</a>
+          <a href="{% url 'works' %}" class="nav-link my-2 text-capitalize">{% if language == 'uz' %}Bo'sh ish o'rinlari{% elif language == 'en' %}Vacancies{% else %}Вакансия{% endif %}</a>
+          <a href="{% url 'employee' %}" class="nav-link my-2 text-capitalize">{% if language == 'uz' %}Tashkilot boshqaruvi{% elif language == 'en' %}Organization management{% else %}Управление организацией{% endif %}</a>
+        </div>
+        <div class="col col-12 col-sm-6 col-md">
+          <h6 class="nav-link text-uppercase mb-3">{% if language == 'uz' %}Press{% elif language == 'en' %}Press{% else %}Информация{% endif %}</h6>
+          <a href="{% url 'news' %}" class="nav-link my-2 text-capitalize">{% if language == 'uz' %}Yangiliklar{% elif language == 'en' %}News{% else %}Новости{% endif %}</a>
+          <a href="{% url 'press_center_1' %}" class="nav-link my-2 text-capitalize">{% if language == 'uz' %}Matbuot markazi{% elif language == 'en' %}Press center{% else %}Пресс-центр{% endif %}</a>
+          <a href="{% url 'press_center_2' %}" class="nav-link my-2 text-capitalize">{% if language == 'uz' %}Ko'rgazmalar{% elif language == 'en' %}Exhibitions{% else %}Выставки{% endif %}</a>
+          <a href="{% url 'photo_gallery' %}" class="nav-link my-2 text-capitalize">{% if language == 'uz' %}Fotogalereya{% elif language == 'en' %}Photo gallery{% else %}Фотогалерея{% endif %}</a>
+          <a href="{% url 'video_gallery' %}" class="nav-link my-2 text-capitalize">{% if language == 'uz' %}Videogalereya{% elif language == 'en' %}Video gallery{% else %}Видео галерея{% endif %}</a>
+        </div>
+        <div class="col col-12 col-sm-6 col-md">
+          <h6 class="nav-link text-uppercase mb-3">{% if language == 'uz' %}Savollar{% elif language == 'en' %}Questions{% else %}Вопросы{% endif %}</h6>
+          <a href="{% url 'services' id=1 %}" class="nav-link my-2 text-capitalize">{% if language == 'uz' %}Eksport{% elif language == 'en' %}Export{% else %}Экспорт{% endif %}</a>
+          <a href="{% url 'services' id=2 %}" class="nav-link my-2 text-capitalize">{% if language == 'uz' %}Import{% elif language == 'en' %}Import{% else %}Импорт{% endif %}</a>
+        </div>
+        <div class="col col-12 col-sm-6 col-md">
+          <h6 class="nav-link mb-3 text-uppercase">{% if language == 'uz' %}Bog'lanish{% elif language == 'en' %}Connection{% else %}Связь{% endif %}</h6>
+          <p class="nav-link mb-2"><i class="me-1 fas fa-location-dot"></i>{{ company.Location }}</p>
+          <a href="tel:{{ company.Phone }}" class="nav-link my-2 text-capitalize"><i class="me-1 fas fa-phone"></i> {{ company.Phone }}</a>
+          <a href="mailto:{{ company.Email }}" class="nav-link my-2"><i class="me-1 fas fa-envelope"></i> {{ company.Email }}</a>
+          <div class="footer__social d-flex gap-3 my-3">
+            <a href="{{ company.Facebook }}" target="_blank" class="footer__social-item"><img class="w-100" src="{% static 'img/fb-icon.png' %}"
+                alt="fb-icon"></a>
+            <a href="{{ company.Telegram }}" target="_blank" class="footer__social-item"><img class="w-100" src="{% static 'img/tg-icon.png' %}"
+                alt="tg-icon"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__copy mt-2">
+      <p class="text-center mb-0">{% if language == 'uz' %}'SXBTEAMS' Barcha huquqlar himoyalangan{% elif language == 'en' %}'SXBTEAMS' All rights reserved{% else %}Все права защищены.{% endif %}</p>
+    </div>
+  </div>
+</footer>
+<!-- /FOOTER -->
+
+<!-- MODAL -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{% if language == 'uz' %}Qayta aloqa{% elif language == 'en' %}Feedback{% else %}Обратная связь{% endif %}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'contact' %}" method='POST' class="message__form modal__form">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <div class="row g-3">
+            <div class="col col-12 col-md-6">
+              <label for="modal-name" class="form-label">{% if language == 'uz' %}Ism{% elif language == 'en' %}Name{% else %}Имя{% endif %}</label>
+              <input class="message__form-input" type="text" id="modal-name" name="modal-name" required>
+            </div>
+            <div class="col col-12 col-md-6">
+              <label for="modal-email" class="form-label">{% if language == 'uz' %}Elektron pochta{% elif language == 'en' %}Email{% else %}Эл. адрес{% endif %}</label>
+              <input class="message__form-input" type="email" id="modal-email" name="modal-email" required>
+            </div>
+            <div class="col col-12 col-md-6">
+              <label for="modal-organization" class="form-label">{% if language == 'uz' %}Tashkilot{% elif language == 'en' %}Organization{% else %}Организация{% endif %}</label>
+              <input class="message__form-input" type="text" id="modal-organization" name="modal-organization" required>
+            </div>
+            <div class="col col-12 col-md-6">
+              <label for="modal-phone" class="form-label">{% if language == 'uz' %}Telefon{% elif language == 'en' %}Phone{% else %}Телефон{% endif %}</label>
+              <input class="message__form-input" type="text" id="modal-phone" name="modal-phone" required>
+            </div>
+            <div class="col col-12">
+              <textarea class="message__form-input" name="modal-message" rows="5" placeholder="{% if language == 'uz' %}Xabar{% elif language == 'en' %}Message{% else %}Сообщение{% endif %}"></textarea>
+            </div>
+            <div class="col col-12">
+              <button class="btn btn-primary banner__carousel-btn w-100" type="submit">{% if language == 'uz' %}Yuborish{% elif language == 'en' %}Sending{% else %}Отправка{% endif %}</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- BOOTSTRAP JS -->
+  <script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- JQUERY JS -->
+  <script src="{% static '/js/jquery-3.6.0.min.js' %}"></script>
+
+  <!-- OWL CAROUSEL JS -->
+  <script src="{% static '/js/owl.carousel.min.js' %}"></script>
+
+  <!-- SWEETALERT2 JS -->
+  <script src="{% static '/js/sweetalert2.min.js' %}"></script>
+
+  <!-- CUSTOM JS -->
+  <script src="{% static '/js/index.js' %}"></script>
+</body>
+
+</html>

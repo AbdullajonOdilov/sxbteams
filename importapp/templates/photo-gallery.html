@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+  <!-- SMALL BANNER -->
+  <section class="small-banner">
+    <div class="small-banner__bg">
+      <img src="{% static 'img/about-us.jpg' %}" alt="banner-img">
+    </div>
+    <div class="small-banner__content">
+      <div class="container">
+        <h1 class="banner__carousel-title text-white">
+          {% if language == 'uz' %}Fotogalereya{% elif language == 'en' %}Photo gallery{% else %}Фотогалерея{% endif %}
+        </h1>
+        <div class="breadcrumb d-flex align-items-center">
+          <a href="{% url 'index' %}" class="text-uppercase text-white">{% if language == 'uz' %}Asosiy{% elif language == 'en' %}Home{% else %}Главный{% endif %}</a>
+          <div class="breadcrumb-line"></div>
+          <a href="#" class="text-uppercase text-white">{% if language == 'uz' %}Fotogalereya{% elif language == 'en' %}Photo gallery{% else %}Фотогалерея{% endif %}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /SMALL BANNER -->
+
+  <!-- PHOTO GALLERY -->
+{% if photo_gallery %}
+  <section class="photo-gallery py-3 py-md-5">
+    <div class="container">
+      <div class="row g-3">
+        {% for item in photo_gallery %}
+            <div class="col col-12 col-sm-6 col-lg-3">
+            <img src="{{ MEDIA_URL }}{{ item.Image.url }}" class="w-100 img-fluid h-100 rounded" alt="gallery-img">
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+  <!-- /PHOTO GALLERY -->
+
+{% endblock content %}

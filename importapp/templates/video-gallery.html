@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+  <!-- SMALL BANNER -->
+  <section class="small-banner">
+    <div class="small-banner__bg">
+      <img src="{% static 'img/about-us.jpg' %}" alt="banner-img">
+    </div>
+    <div class="small-banner__content">
+      <div class="container">
+        <h1 class="banner__carousel-title text-white">
+          {% if language == 'uz' %}Videogalereya{% elif language == 'en' %}Video gallery{% else %}Видео галерея{% endif %}
+        </h1>
+        <div class="breadcrumb d-flex align-items-center">
+          <a href="{% url 'index' %}" class="text-uppercase text-white">{% if language == 'uz' %}Asosiy{% elif language == 'en' %}Main{% else %}Главный{% endif %}</a>
+          <div class="breadcrumb-line"></div>
+          <a href="#" class="text-uppercase text-white">{% if language == 'uz' %}Videogalereya{% elif language == 'en' %}Video gallery{% else %}Видео галерея{% endif %}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /SMALL BANNER -->
+
+  <!-- VIDEO GALLERY -->
+{% if video_gallery %}
+  <section class="video-gallery py-3 py-md-5">
+    <div class="container">
+      <div class="row g-3">
+        {% for item in video_gallery %}
+        <div class="col col-12 col-md-6">
+          <video width="500px" height="500px" class="news-detail__img ratio ratio-16x9" controls>
+            <source src="{{ item.Video_file.url }}" type="video/mp4">
+           </video>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+  <!-- /VIDEO GALLERY -->
+
+
+{% endblock content %}

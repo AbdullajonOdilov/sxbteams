@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+  <!-- SMALL BANNER -->
+  <section class="small-banner">
+    <div class="small-banner__bg">
+      <img src="{% static 'img/about-us.jpg' %}" alt="banner-img">
+    </div>
+    <div class="small-banner__content">
+      <div class="container">
+        <h1 class="banner__carousel-title text-white">
+          {% if product_c_1 %}
+          {{ product_c_1.get_Type_of_product_display }} - {{ product_c_1.Name }}
+          {% else %}
+          {{ product_c_2.Type_1.get_Type_of_product_display }} - {{ product_c_2.Name }} 
+          {% endif %}
+        </h1>
+        <div class="breadcrumb d-flex align-items-center">
+          <a href="{% url 'index' %}" class="text-uppercase text-white">
+          {% if language == 'uz' %}Asosiy{% elif language == 'en' %}Home{% else %}Главный{% endif %}</a>
+          <div class="breadcrumb-line"></div>
+          {% if product_c_1 %}
+          <a href="" class="text-uppercase text-white">{{ product_c_1.Name }}</a>
+          {% else %}
+          <a href="{% url 'products' id=product_c_2.Type_1.id %}" class="text-uppercase text-white">{{ product_c_2.Type_1.Name }}</a>
+          <div class="breadcrumb-line"></div>
+          <a href="" class="text-uppercase text-white">{{ product_c_2.Name }}</a>
+          {% endif %}
+          <a href="#" class="text-uppercase text-white">
+            {% if product_c_1 %}
+            {% for product_c_1 in products_c_2 %}{% if product_c_1.id == product_c_1_id %}{{ product_c_1.Name }}{% endif %}{% endfor %}
+            {% else %}
+            {% for product_c_1 in products %}{% if product_c_1.id == product_c_1_id %}{{ product_c_1.Name }}{% endif %}{% endfor %}
+            {% endif %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /SMALL BANNER -->
+
+  <section class="services py-3 py-md-5">
+    <div class="container">
+      <div class="services__list">
+        <div class="row g-3">
+
+          {% if products_c_2 %}
+          {% for product_c_2 in products_c_2 %}
+            <div class="col col-12 col-md-4">
+              <a class="services__item" href="{% url 'product_kategory' id=product_c_2.id %}">
+                <div class="services__item-imgBx">
+                  <img src="{{ MEDIA_URL }}{{ product_c_2.Image.url }}" alt="services-img">
+                </div>
+                <div class="services__item-content">
+                  <h3 class="services__item-title text-center text-uppercase text-white">{{ product_c_2.Name }}</h3>
+                </div>
+              </a>
+            </div>
+            {% endfor %}
+          {% else %}
+            {% for product_c_2 in products %}
+            <div class="col col-12 col-md-4">
+              <a class="services__item" href="{% url 'product_kategory_detail' id=product_c_2.id %}">
+                <div class="services__item-imgBx">
+                  <img src="{{ MEDIA_URL }}{{ product_c_2.Image.url }}" alt="services-img">
+                </div>
+                <div class="services__item-content">
+                  <h3 class="services__item-title text-center text-uppercase text-white">{{ product_c_2.Name }}</h3>
+                </div>
+              </a>
+            </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

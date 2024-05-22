@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+  <!-- SMALL BANNER -->
+  <section class="small-banner">
+    <div class="small-banner__bg">
+      <img src="{% static 'img/about-us.jpg' %}" alt="banner-img">
+    </div>
+    <div class="small-banner__content">
+      <div class="container">
+        <h1 class="banner__carousel-title text-white">
+        {{ product.Type_2.Type_1.get_Type_of_product_display }} - {{ product.Name }}
+        </h1>
+        <div class="breadcrumb d-flex align-items-center">
+          <a href="{% url 'index' %}" class="text-uppercase text-white">
+          {% if language == 'uz' %}Asosiy{% elif language == 'en' %}Home{% else %}Главный{% endif %}</a>
+          <div class="breadcrumb-line"></div>
+          <a href="{% url 'products' id=product.Type_2.Type_1.id %}" class="text-uppercase text-white">{{ product.Type_2.Type_1.Name }}</a>
+          <div class="breadcrumb-line"></div>
+          <a href="{% url 'product_kategory' id=product.Type_2.id %}" class="text-uppercase text-white">{{ product.Type_2.Name }}</a>
+          <div class="breadcrumb-line"></div>
+          <a href="#" class="text-uppercase text-white">{{ product.Name }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /SMALL BANNER -->
+
+  <!-- PRODUCT DETAIL -->
+  <section class="product-detail py-3 py-md-5">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col col-12 col-md-4">
+          <div class="product-detail__img">
+            <img src="{{ MEDIA_URL }}{{ product.Image.url }}" alt="product-detail-img" class="img-fluid rounded">
+          </div>
+        </div>
+        <div class="col col-12 col-md-8">
+          <div class="product-detail__content">
+            {{ product.Information|safe }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /PRODUCT DETAIL -->
+{% endblock content %}

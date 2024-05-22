@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: $open400;
+  src: url("../../fonts/OpenSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: $open500;
+  src: url("../../fonts/OpenSans-Medium.ttf");
+}
+
+@font-face {
+  font-family: $open600;
+  src: url("../../fonts/OpenSans-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: $open700;
+  src: url("../../fonts/OpenSans-Bold.ttf");
+}
+
+body {
+  font-family: $open500, sans-serif;
+  font-size: $txt-size;
+  color: $txt-color1;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+input, textarea, button {
+  border: none;
+  outline: none;
+}
+
+a {
+  outline: none !important;
+  text-decoration: none;
+  color: $txt-color1;
+
+  &:hover {
+    color: inherit;
+  }
+}
+
+.bg-light {
+  background-color: #fff !important;
+}
+
+.bg-gray {
+  background-color: #f2f2f2 !important;
+}
+
+.section-title {
+  @include title-size;
+  font-family: $open700;
+  margin-bottom: 0;
+}
+
+.section-subtitle {
+  @include subtitle-size;
+  font-family: $open700;
+  margin-bottom: 0;
+}
+
+.fw-bolder {
+  font-family: $open600;
+}

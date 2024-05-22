@@ -1,0 +1,335 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-22 20:38+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+#: .\importapp\models.py:38 .\importapp\templates\base.html:121
+#: .\importapp\templates\base.html:155 .\importapp\templates\base.html:299
+#: .\importapp\templates\index.html:209
+msgid "Import"
+msgstr "импорт"
+
+#: .\importapp\models.py:39 .\importapp\templates\base.html:136
+msgid "Export"
+msgstr "Экспорт"
+
+#: .\importapp\models.py:346
+msgid "Legal"
+msgstr "Юридический"
+
+#: .\importapp\models.py:347
+msgid "Individual"
+msgstr "Индивидуальный"
+
+#: .\importapp\templates\about-us.html:14
+#: .\importapp\templates\about-us.html:19 .\importapp\templates\index.html:163
+msgid "Kompaniya haqida"
+msgstr "О компании"
+
+#: .\importapp\templates\about-us.html:17 .\importapp\templates\contact.html:16
+#: .\importapp\templates\corruption.html:17
+#: .\importapp\templates\employee.html:16
+#: .\importapp\templates\feedback.html:16
+#: .\importapp\templates\new-details.html:17 .\importapp\templates\news.html:16
+#: .\importapp\templates\press-center-details.html:16
+#: .\importapp\templates\press-center.html:16
+#: .\importapp\templates\product-detail.html:16
+#: .\importapp\templates\products.html:16
+#: .\importapp\templates\video-gallery.html:16
+#: .\importapp\templates\works.html:16 .\importapp\templates\xizmatlar.html:17
+msgid "Asosiy"
+msgstr "Главный"
+
+#: .\importapp\templates\base.html:59
+msgid "Ko'rinish:"
+msgstr "Вид:"
+
+#: .\importapp\templates\base.html:64
+msgid "Normal"
+msgstr "Обычный"
+
+#: .\importapp\templates\base.html:68
+msgid "Oq-qora"
+msgstr "Черное и белое"
+
+#: .\importapp\templates\base.html:73
+msgid "Shrift o'lchami:"
+msgstr "Размер шрифта:"
+
+#: .\importapp\templates\base.html:110 .\importapp\templates\base.html:113
+#: .\importapp\templates\base.html:277 .\importapp\templates\base.html:283
+#: .\importapp\templates\base.html:284
+msgid "Biz haqimizda"
+msgstr "насчет нас"
+
+#: .\importapp\templates\base.html:114 .\importapp\templates\base.html:285
+msgid "Bo'sh ish o'rinlari"
+msgstr "Свободные места"
+
+#: .\importapp\templates\base.html:115 .\importapp\templates\base.html:286
+msgid "Tashkilot boshqaruvi"
+msgstr "Управление организацией"
+
+#: .\importapp\templates\base.html:151 .\importapp\templates\index.html:189
+#: .\importapp\templates\xizmatlar.html:14
+#: .\importapp\templates\xizmatlar.html:19
+msgid "Xizmatlar"
+msgstr "Услуги"
+
+#: .\importapp\templates\base.html:154 .\importapp\templates\base.html:298
+#: .\importapp\templates\index.html:199
+msgid "Eksport"
+msgstr "Экспорт"
+
+#: .\importapp\templates\base.html:156 .\importapp\templates\index.html:219
+msgid "Bojxona rasmiylashtiruvi"
+msgstr "Таможенное оформление"
+
+#: .\importapp\templates\base.html:157
+msgid "Autsorsing"
+msgstr "Аутсорсинг"
+
+#: .\importapp\templates\base.html:163 .\importapp\templates\base.html:278
+#: .\importapp\templates\base.html:289
+msgid "Press"
+msgstr "Нажимать"
+
+#: .\importapp\templates\base.html:166 .\importapp\templates\base.html:290
+#: .\importapp\templates\news.html:13 .\importapp\templates\news.html:18
+msgid "Yangiliklar"
+msgstr "Новости"
+
+#: .\importapp\templates\base.html:167 .\importapp\templates\base.html:291
+#: .\importapp\templates\index.html:233
+msgid "Matbuot markazi"
+msgstr "Пресс-центр"
+
+#: .\importapp\templates\base.html:168 .\importapp\templates\base.html:292
+msgid "Ko'rgazmalar"
+msgstr "Выставки"
+
+#: .\importapp\templates\base.html:169 .\importapp\templates\base.html:293
+#: .\importapp\templates\photo-gallery.html:13
+#: .\importapp\templates\photo-gallery.html:18
+msgid "Fotogalereya"
+msgstr "Фотогалерея"
+
+#: .\importapp\templates\base.html:170 .\importapp\templates\base.html:294
+#: .\importapp\templates\video-gallery.html:13
+#: .\importapp\templates\video-gallery.html:18
+msgid "Videogalereya"
+msgstr "Видео галерея"
+
+#: .\importapp\templates\base.html:176
+msgid "Murojaat"
+msgstr "Обращаться"
+
+#: .\importapp\templates\base.html:179
+msgid "Yur-jis shaxslar murojaati"
+msgstr "Обращение физических лиц"
+
+#: .\importapp\templates\base.html:180
+msgid "Korrupsiya haqida fikrlar"
+msgstr "Мысли о коррупции"
+
+#: .\importapp\templates\base.html:185
+msgid "Aloqa"
+msgstr "Коммуникация"
+
+#: .\importapp\templates\base.html:217
+msgid "Xabar qoldirish"
+msgstr "Оставить сообщение"
+
+#: .\importapp\templates\base.html:226 .\importapp\templates\base.html:339
+#: .\importapp\templates\contact.html:61
+msgid "Ism"
+msgstr "Имя"
+
+#: .\importapp\templates\base.html:229 .\importapp\templates\base.html:343
+#: .\importapp\templates\contact.html:65
+msgid "Elektron pochta"
+msgstr "Эл. адрес"
+
+#: .\importapp\templates\base.html:234 .\importapp\templates\base.html:355
+#: .\importapp\templates\contact.html:79
+msgid "Xabar"
+msgstr "Сообщение"
+
+#: .\importapp\templates\base.html:239 .\importapp\templates\base.html:358
+#: .\importapp\templates\contact.html:82 .\importapp\templates\feedback.html:82
+msgid "Yuborish"
+msgstr "Отправка"
+
+#: .\importapp\templates\base.html:252
+msgid "Hamkorlarimiz"
+msgstr "Наши партнеры"
+
+#: .\importapp\templates\base.html:279 .\importapp\templates\base.html:297
+msgid "Savollar"
+msgstr "Вопросы"
+
+#: .\importapp\templates\base.html:280 .\importapp\templates\base.html:302
+msgid "Bog'lanish"
+msgstr "Связь"
+
+#: .\importapp\templates\base.html:318
+msgid "'Uwoodteams' Barcha huquqlar himoyalangan"
+msgstr "Все права защищены."
+
+#: .\importapp\templates\base.html:330
+msgid "Qayta aloqa"
+msgstr "Обратная связь"
+
+#: .\importapp\templates\base.html:347 .\importapp\templates\contact.html:69
+msgid "Tashkilot"
+msgstr "Организация"
+
+#: .\importapp\templates\base.html:351 .\importapp\templates\contact.html:74
+#: .\importapp\templates\feedback.html:70
+msgid "Telefon"
+msgstr "телефон"
+
+#: .\importapp\templates\contact.html:13 .\importapp\templates\contact.html:18
+msgid "Kontaktlar"
+msgstr "Контакты"
+
+#: .\importapp\templates\contact.html:33
+msgid "Manzil:"
+msgstr "Адрес:"
+
+#: .\importapp\templates\contact.html:37
+msgid "Elektron pochta:"
+msgstr "Эл. адрес:"
+
+#: .\importapp\templates\contact.html:41
+msgid "Telefon:"
+msgstr "Телефон:"
+
+#: .\importapp\templates\contact.html:45
+msgid "Faks:"
+msgstr "Факс:"
+
+#: .\importapp\templates\contact.html:49
+msgid "Ish vaqti:"
+msgstr "Рабочее время:"
+
+#: .\importapp\templates\corruption.html:14
+#: .\importapp\templates\corruption.html:19
+msgid "Korrupsiya to'g'risidagi hisobotlar bo'yicha fikr-mulohazalar"
+msgstr "Отзывы об отчетах о коррупции"
+
+#: .\importapp\templates\employee.html:13
+#: .\importapp\templates\employee.html:18
+msgid "Xodimlar"
+msgstr "Сотрудники"
+
+#: .\importapp\templates\feedback.html:13
+#: .\importapp\templates\feedback.html:18
+msgid "Yur-jis. shaxslar murojaati"
+msgstr "Юр-джис. обращение физических лиц"
+
+#: .\importapp\templates\feedback.html:34
+msgid "Yuridik shaxslar"
+msgstr "Юридические лица"
+
+#: .\importapp\templates\feedback.html:40
+msgid "Jismoniy shaxslar"
+msgstr "Физические лица"
+
+#: .\importapp\templates\feedback.html:46
+msgid "FISH"
+msgstr "РЫБЫ"
+
+#: .\importapp\templates\feedback.html:50
+msgid "Tug'ilgan sanasi"
+msgstr "Дата рождения"
+
+#: .\importapp\templates\feedback.html:54
+msgid "Pasport seriyasi"
+msgstr "Паспорт серии"
+
+#: .\importapp\templates\feedback.html:58
+msgid "Manzil"
+msgstr "Адрес"
+
+#: .\importapp\templates\feedback.html:62
+msgid "Indeks"
+msgstr "Индекс"
+
+#: .\importapp\templates\feedback.html:66
+msgid "E-mail"
+msgstr "Эл. почта"
+
+#: .\importapp\templates\feedback.html:74
+msgid "Subyekt turi"
+msgstr "Тип темы"
+
+#: .\importapp\templates\feedback.html:78
+msgid "Savol matni"
+msgstr "Текст вопроса"
+
+#: .\importapp\templates\index.html:17 .\importapp\templates\index.html:38
+#: .\importapp\templates\index.html:53 .\importapp\templates\index.html:68
+msgid "Uwoodteams - Eksport va importni qo'llab-quvvatlash"
+msgstr "Uwoodteams — поддержка экспорта и импорта"
+
+#: .\importapp\templates\index.html:20 .\importapp\templates\index.html:41
+#: .\importapp\templates\index.html:56 .\importapp\templates\index.html:71
+msgid "So'rov jo'natish"
+msgstr "Отправить запрос"
+
+#: .\importapp\templates\index.html:85
+msgid "Mahsulotlar"
+msgstr "Товары"
+
+#: .\importapp\templates\index.html:171
+msgid "Batafsil ma'lumot"
+msgstr "учить больше"
+
+#: .\importapp\templates\index.html:251
+msgid "Barcha yangiliklar"
+msgstr "Все новости"
+
+#: .\importapp\templates\press-center.html:13
+msgid "Press center"
+msgstr "Пресс-центр"
+
+#: .\importapp\templates\press-center.html:18
+msgid "press-center"
+msgstr "пресс-центр"
+
+#: .\importapp\templates\works.html:13 .\importapp\templates\works.html:18
+msgid "Ishlar"
+msgstr "Работа"
+
+#: .\importapp\templates\works.html:29
+msgid "Bo'sh ish o'rinlari haqida ma'lumot."
+msgstr "Информация о вакансиях."
+
+#: .\mainfolder\settings.py:121
+msgid "Uzbek"
+msgstr "узбекский"
+
+#: .\mainfolder\settings.py:122
+msgid "English"
+msgstr "Английский"
+
+#: .\mainfolder\settings.py:123
+msgid "Russian"
+msgstr "Русский"

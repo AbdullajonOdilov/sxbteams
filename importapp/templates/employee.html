@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+  <!-- SMALL BANNER -->
+  <section class="small-banner">
+    <div class="small-banner__bg">
+      <img src="{% static 'img/about-us.jpg' %}" alt="banner-img">
+    </div>
+    <div class="small-banner__content">
+      <div class="container">
+        <h1 class="banner__carousel-title text-white">
+          {% if language == 'uz' %}Xodimlar{% elif language == 'en' %}Employees{% else %}Сотрудники{% endif %}
+        </h1>
+        <div class="breadcrumb d-flex align-items-center">
+          <a href="{% url 'index' %}" class="text-uppercase text-white">{% if language == 'uz' %}Asosiy{% elif language == 'en' %}Main{% else %}Главный{% endif %}</a>
+          <div class="breadcrumb-line"></div>
+          <a href="#" class="text-uppercase text-white">{% if language == 'uz' %}Xodimlar{% elif language == 'en' %}Employees{% else %}Сотрудники{% endif %}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /SMALL BANNER -->
+
+  <!-- LEADING -->
+  <section class="leading py-3 py-md-5">
+    <div class="container">
+      <div class="row">
+        <div class="leading__list">
+          <div class="row g-3">
+            {% if employee_items %}
+              {% for employee_item in employee_items %}
+                <div class="col col-12 col-md-4 col-lg-3">
+                  <div class="leading__card card">
+                    <div class="leading__img border-bottom">
+                      <img src="{{ MEDIA_URL }}{{ employee_item.Image.url }}" class="card-img-top" alt="person-img">
+                    </div>
+                    <div class="card-body p-0">
+                      <h5 class="card-title m-2">{{ employee_item.Name }}</h5>
+                      <h6 class="card-title m-2">{{ employee_item.Position }}</h6>
+                      <p class="card-text m-2">{{ employee_item.ReceptionDate }}</p>
+                      <div class="leading__contact">
+                        <div class="leading__contact-item p-1">
+                          <a href="mailto:{% if employee_item.Email %}{{ employee_item.Email }}{% endif %}" class="d-block"><i class="fas fa-envelope"></i></a>
+                        </div>
+                        <div class="leading__contact-item p-1">
+                          <a href="tel:{% if employee_item.Phone %}{{ employee_item.Phone }}{% endif %}" class="d-block"><i class="fas fa-phone"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /LEADING -->
+{% endblock content %}

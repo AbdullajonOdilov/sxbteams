@@ -1,0 +1,42 @@
+@media (min-width: 992px) {
+  .header .navbar {
+    .dropdown-menu {
+      box-shadow: 0px 0px 8px 0px rgb(0, 0, 1, 0.14);
+      border: none;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .banner__carousel-content {
+    width: 90%;
+  }
+
+  .news-detail {
+    &__img {
+      height: auto;
+    }
+
+    &__date {
+      padding: 12px;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .message__form-input {
+    padding: 14px;
+  }
+
+  .products {
+    &__card {
+      &.card-row {
+        flex-direction: column;
+
+        &>div {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

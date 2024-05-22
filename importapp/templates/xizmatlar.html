@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+
+  <!-- SMALL BANNER -->
+  <section class="small-banner">
+    <div class="small-banner__bg">
+      <img src="{% static 'img/about-us.jpg' %}" alt="banner-img">
+    </div>
+    <div class="small-banner__content">
+      <div class="container">
+        <h1 class="banner__carousel-title text-white">
+          {% if language == 'uz' %}Xizmatlar{% elif language == 'en' %}Services{% else %}Услуги{% endif %}
+        </h1>
+        <div class="breadcrumb d-flex align-items-center">
+          <a href="{% url 'index' %}" class="text-uppercase text-white">{% if language == 'uz' %}Asosiy{% elif language == 'en' %}Main{% else %}Главный{% endif %}</a>
+          <div class="breadcrumb-line"></div>
+          <a href="#" class="text-uppercase text-white">{% if language == 'uz' %}Xizmatlar{% elif language == 'en' %}Services{% else %}Услуги{% endif %}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /SMALL BANNER -->
+
+  <!-- CONTENT -->
+  <section class="content py-3 py-md-5">
+    {% if services_items %}
+      {% for services_item in services_items %}
+        <div class="container">
+          <div class="content__data">
+            {{ services_item.Information|safe }}
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </section>
+  <!-- /CONTENT -->
+
+{% endblock content %}

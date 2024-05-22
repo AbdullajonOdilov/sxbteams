@@ -1,0 +1,25 @@
+.link-btn {
+  font-family: $open700;
+  @include normal-size;
+  transition: color .3s ease;
+
+  img {
+    margin-left: 2px;
+    margin-bottom: 3px;
+    transition: margin-left .3s ease;
+  }
+
+  &:hover {
+    color: $primary;
+
+    img {
+      margin-left: 6px;
+    }
+  }
+
+  &.btn-dark {
+    background-color: $txt-color1;
+    color: #fff;
+    padding: 10px 16px;
+  }
+}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+  <!-- SMALL BANNER -->
+  <section class="small-banner">
+    <div class="small-banner__bg">
+      <img src="{% static 'img/about-us.jpg' %}" alt="banner-img">
+    </div>
+    <div class="small-banner__content">
+      <div class="container">
+        <h1 class="banner__carousel-title text-white">
+          {% if language == 'uz' %}Yangiliklar{% elif language == 'en' %}News{% else %}Новости{% endif %}
+        </h1>
+        <div class="breadcrumb d-flex align-items-center">
+          <a href="{% url 'index' %}" class="text-uppercase text-white">{% if language == 'uz' %}Asosiy{% elif language == 'en' %}Home{% else %}Главный{% endif %}</a>
+          <div class="breadcrumb-line"></div>
+          <a href="#" class="text-uppercase text-white">{% if language == 'uz' %}Yangiliklar{% elif language == 'en' %}News{% else %}Новости{% endif %}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /SMALL BANNER -->
+
+  <!-- NEWS -->
+  <section class="news press py-3 py-md-5">
+    <div class="container">
+      <div class="press__list">
+        {% if news %}
+            <div class="row g-3">
+                {% for new in news %}
+                    <div class="col col-12 col-sm-6 col-lg-3">
+                        <a href="{% url 'new' id=new.id %}" class="press__card card">
+                        <img src="{{ MEDIA_URL }}{{ new.Image.url }}" class="card-img-top" alt="news-img">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ new.Name }}</h5>
+                            <p class="card-text"><small class="text-muted">{{ new.Date|date:"d.m.Y" }}</small></p>
+                        </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  <!-- /NEWS -->
+{% endblock content %}

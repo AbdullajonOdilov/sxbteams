@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load i18n %}
+  <!-- BANNER -->
+{% if main_images %}
+  <section class="banner">
+    <div class="banner__carousel owl-carousel owl-theme">
+    {% for main_image in main_images %}
+      <div class="banner__carousel-item">
+        <div class="banner__carousel-imgBx">
+          <img src="{{ MEDIA_URL }}{{ main_image.Image.url }}" alt="banner-img">
+        </div>
+        <div class="banner__carousel-content d-flex flex-column align-items-center">
+          <h1 class="banner__carousel-title text-uppercase text-white text-center">
+            {% if language == 'uz' %}SXBTEAMS - Eksport va importni qo'llab-quvvatlash{% elif language == 'en' %}SXBTEAMS - Export and import support{% else %}SXBTEAMS — поддержка экспорта и импорта{% endif %}
+          </h1>
+          <button class="btn btn-primary banner__carousel-btn" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop">{% if language == 'uz' %}So'rov jo'natish{% elif language == 'en' %}Send a request{% else %}Отправить запрос{% endif %}</button>
+        </div>
+        <div class="banner__carousel-down text-center">
+          <a href="#about"><i class="fas fa-chevron-down"></i></a>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </section>
+{% else %}
+  <section class="banner">
+    <div class="banner__carousel owl-carousel owl-theme">
+      <div class="banner__carousel-item">
+        <div class="banner__carousel-imgBx">
+          <img src="{% static 'img/banner.jpg' %}" alt="banner-img">
+        </div>
+        <div class="banner__carousel-content d-flex flex-column align-items-center">
+          <h1 class="banner__carousel-title text-uppercase text-white text-center">
+            {% if language == 'uz' %}SXBTEAMS - Eksport va importni qo'llab-quvvatlash{% elif language == 'en' %}SXBTEAMS - Export and import support{% else %}SXBTEAMS — поддержка экспорта и импорта{% endif %}
+          </h1>
+          <button class="btn btn-primary banner__carousel-btn" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop">{% if language == 'uz' %}So'rov jo'natish{% elif language == 'en' %}Send a request{% else %}Отправить запрос{% endif %}</button>
+        </div>
+        <div class="banner__carousel-down text-center">
+          <a href="#about"><i class="fas fa-chevron-down"></i></a>
+        </div>
+      </div>
+      <div class="banner__carousel-item">
+        <div class="banner__carousel-imgBx">
+          <img src="{% static 'img/banner.jpg' %}" alt="banner-img">
+        </div>
+        <div class="banner__carousel-content d-flex flex-column align-items-center">
+          <h1 class="banner__carousel-title text-uppercase text-white text-center">
+            {% if language == 'uz' %}SXBTEAMS - Eksport va importni qo'llab-quvvatlash{% elif language == 'en' %}SXBTEAMS - Export and import support{% else %}SXBTEAMS — поддержка экспорта и импорта{% endif %}
+          </h1>
+          <button class="btn btn-primary banner__carousel-btn" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop">{% if language == 'uz' %}So'rov jo'natish{% elif language == 'en' %}Send a request{% else %}Отправить запрос{% endif %}</button>
+        </div>
+        <div class="banner__carousel-down text-center">
+          <a href="#about"><i class="fas fa-chevron-down"></i></a>
+        </div>
+      </div>
+      <div class="banner__carousel-item">
+        <div class="banner__carousel-imgBx">
+          <img src="{% static 'img/banner.jpg' %}" alt="banner-img">
+        </div>
+        <div class="banner__carousel-content d-flex flex-column align-items-center">
+          <h1 class="banner__carousel-title text-uppercase text-white text-center">
+            {% if language == 'uz' %}SXBTEAMS - Eksport va importni qo'llab-quvvatlash{% elif language == 'en' %}SXBTEAMS - Export and import support{% else %}SXBTEAMS — поддержка экспорта и импорта{% endif %}
+          </h1>
+          <button class="btn btn-primary banner__carousel-btn" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop">{% if language == 'uz' %}So'rov jo'natish{% elif language == 'en' %}Send a request{% else %}Отправить запрос{% endif %}</button>
+        </div>
+        <div class="banner__carousel-down text-center">
+          <a href="#about"><i class="fas fa-chevron-down"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+  <!-- /BANNER -->
+
+  <!-- PRODUCTS -->
+  <section class="products py-3 py-md-5">
+    <div class="container">
+      <h1 class="section-title text-center">{% if language == 'uz' %}Mahsulotlar{% elif language == 'en' %}Products{% else %}Товары{% endif %}</h1>
+      <div class="line"></div>
+      <div class="products__list">
+        <div class="row g-3">
+          {% if products_c_2 %}
+            <div class="col col-12">
+                <div class="row g-3">
+                  {% for product_c_2 in products_c_2 %}
+                    <div class="col col-12 col-lg-6">
+                      <a class="products__card card-row" href="{% url 'product_kategory' id=product_c_2.id %}">
+                        <div class="products__imgBx">
+                          <img src="{{ MEDIA_URL }}{{ product_c_2.Image.url }}" class="w-100" alt="product-img">
+                        </div>
+                        <div class="products__content">
+                          <h2 class="section-subtitle text-center text-uppercase">{{ product_c_2.Name }}</h2>
+                        </div>
+                      </a>
+                    </div>
+                  {% endfor %}
+              </div>
+            </div>
+          {% else %}
+          <div class="col col-12">
+            <div class="row g-3">
+              <div class="col col-12 col-lg-6">
+                <a class="products__card card-row" href="#">
+                  <div class="products__imgBx">
+                    <img src="{% static 'img/product-item1.webp' %}" class="w-100" alt="product-img">
+                  </div>
+                  <div class="products__content">
+                    <h2 class="section-subtitle text-center text-uppercase">To'qimachilik sanoati</h2>
+                  </div>
+                </a>
+              </div>
+              <div class="col col-12 col-lg-6">
+                <a class="products__card card-row" href="#">
+                  <div class="products__imgBx">
+                    <img src="{% static 'img/product-item2.webp' %}" class="w-100" alt="product-img">
+                  </div>
+                  <div class="products__content">
+                    <h2 class="section-subtitle text-center text-uppercase">Ziravor sanoati</h2>
+                  </div>
+                </a>
+              </div>
+              <div class="col col-12 col-lg-6">
+                <a class="products__card card-row" href="#">
+                  <div class="products__imgBx">
+                    <img src="{% static 'img/product-item3.webp' %}" class="w-100" alt="product-img">
+                  </div>
+                  <div class="products__content">
+                    <h2 class="section-subtitle text-center text-uppercase">Bug'doy sanoati</h2>
+                  </div>
+                </a>
+              </div>
+              <div class="col col-12 col-lg-6">
+                <a class="products__card card-row" href="#">
+                  <div class="products__imgBx">
+                    <img src="{% static 'img/product-item4.webp' %}" class="w-100" alt="product-img">
+                  </div>
+                  <div class="products__content">
+                    <h2 class="section-subtitle text-center text-uppercase">Avtomobil sanoati</h2>
+                  </div>
+                </a>
+              </div>
+          </div>
+        </div>
+        {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /PRODUCTS -->
+
+  <!-- ABOUT COMPANY -->
+  <div class="about py-3 py-md-5" id="about">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col col-12 col-md-6">
+          <h1 class="section-title">{% if language == 'uz' %}Kompaniya haqida{% elif language == 'en' %}About the company{% else %}О компании{% endif %}</h1>
+          <div class="line mx-0"></div>
+          <div class="about__content">
+            {% if about_us_item %}
+              {{ about_us_item.Information|safe }}
+            {% endif %}
+          </div>
+          <a href="#" class="link-btn text-uppercase my-3 d-inline-block">
+            {% if language == 'uz' %}Batafsil ma'lumot{% elif language == 'en' %}learn more{% else %}учить больше{% endif %} <img src="{% static 'img/arrow.png' %}" alt="arrow">
+          </a>
+        </div>
+        {% if company.Video_file %}
+        <div class="col col-12 col-md-6">
+          <video width="500px" height="500px" class="news-detail__img ratio ratio-16x9" controls>
+            <source src="{{ company.Video_file.url }}" type="video/mp4">
+           </video>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <!-- /ABOUT COMPANY -->
+
+  <!-- SERVICES -->
+  <section class="services py-3 py-md-5">
+    <div class="container">
+      <h1 class="section-title text-center">{% if language == 'uz' %}Xizmatlar{% elif language == 'en' %}Services{% else %}Услуги{% endif %}</h1>
+      <div class="line"></div>
+      <div class="services__list">
+        <div class="row g-3">
+          <div class="col col-12 col-md-4">
+            <a class="services__item" href="{% url 'services' id=1 %}">
+              <div class="services__item-imgBx">
+                <img src="{% static 'img/export.jpg' %}" alt="services-img">
+              </div>
+              <div class="services__item-content">
+                <h3 class="services__item-title text-center text-uppercase text-white">{% if language == 'uz' %}Eksport{% elif language == 'en' %}Export{% else %}Экспорт{% endif %}</h3>
+              </div>
+            </a>
+          </div>
+          <div class="col col-12 col-md-4">
+            <a class="services__item" href="{% url 'services' id=2 %}">
+              <div class="services__item-imgBx">
+                <img src="{% static 'img/import.png' %}" alt="services-img">
+              </div>
+              <div class="services__item-content">
+                <h3 class="services__item-title text-center text-uppercase text-white">{% if language == 'uz' %}Import{% elif language == 'en' %}Import{% else %}импорт{% endif %}</h3>
+              </div>
+            </a>
+          </div>
+          <div class="col col-12 col-md-4">
+            <a class="services__item" href="{% url 'services' id=3 %}">
+              <div class="services__item-imgBx">
+                <img src="{% static 'img/bojxona.png' %}" alt="services-img">
+              </div>
+              <div class="services__item-content">
+                <h3 class="services__item-title text-center text-uppercase text-white">{% if language == 'uz' %}Bojxona rasmiylashtiruvi{% elif language == 'en' %}Customs clearance{% else %}Таможенное оформление{% endif %}</h3>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /SERVICES -->
+
+  <!-- PRESS CENTER -->
+  {% if press_center %}
+  <section class="press py-3 py-md-5">
+    <div class="container">
+      <h1 class="section-title text-center">{% if language == 'uz' %}Matbuot markazi{% elif language == 'en' %}Press center{% else %}Пресс-центр{% endif %}</h1>
+      <div class="line"></div>
+      <div class="press__list">
+        <div class="row g-3">
+          {% for item in press_center %}
+          <div class="col col-12 col-sm-6 col-lg-3">
+            <a href="{% url 'press_center_1_details' id=item.id %}" class="press__card card">
+              <img src="{{ MEDIA_URL }}{{ item.Image.url }}" class="card-img-top" alt="press-img">
+              <div class="card-body">
+                <h5 class="card-title">{{ item.Name }}</h5>
+                <p class="card-text"><small class="text-muted">{{ item.Date|date:'d.m.Y' }}</small></p>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="row">
+          <div class="col col-12 text-center">
+            <a href="{% url 'press_center_1' %}" class="link-btn text-uppercase my-3 d-inline-block">{% if language == 'uz' %}Barcha yangiliklar{% elif language == 'en' %}All news{% else %}Все новости{% endif %} <img
+                src="{% static 'img/arrow.png' %}" alt="arrow"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+  <!-- /PRESS CENTER -->
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

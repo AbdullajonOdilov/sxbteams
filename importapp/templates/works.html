@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load i18n %}
+  <!-- SMALL BANNER -->
+  <section class="small-banner">
+    <div class="small-banner__bg">
+      <img src="{% static 'img/about-us.jpg' %}" alt="banner-img">
+    </div>
+    <div class="small-banner__content">
+      <div class="container">
+        <h1 class="banner__carousel-title text-white">
+          {% if language == 'uz' %}Ishlar{% elif language == 'en' %}Jobs{% else %}Работа{% endif %}
+        </h1>
+        <div class="breadcrumb d-flex align-items-center">
+          <a href="{% url 'index' %}" class="text-uppercase text-white">{% if language == 'uz' %}Asosiy{% elif language == 'en' %}Main{% else %}Главный{% endif %}</a>
+          <div class="breadcrumb-line"></div>
+          <a href="#" class="text-uppercase text-white">{% if language == 'uz' %}Ishlar{% elif language == 'en' %}Jobs{% else %}Работа{% endif %}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /SMALL BANNER -->
+
+  <!-- CONTENT -->
+  <section class="content py-3 py-md-5">
+    {% if work_items %}
+      <div class="container">
+        <h5 class="section-title">{% if language == 'uz' %}Bo'sh ish o'rinlari haqida ma'lumot.{% elif language == 'en' %}Information about vacancies.{% else %}Информация о вакансиях.{% endif %}</h5>
+        {% for work in work_items %}
+            <div class="line mx-0"></div>
+            <div class="content__data">
+              {{ work.Information|safe }}
+            </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </section>
+  <!-- /CONTENT -->
+
+{% endblock content %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+  <!-- SMALL BANNER -->
+  <section class="small-banner">
+    <div class="small-banner__bg">
+      <img src="{% static 'img/about-us.jpg' %}" alt="banner-img">
+    </div>
+    <div class="small-banner__content">
+      <div class="container">
+        <h1 class="banner__carousel-title text-white">
+          {% if language == 'uz' %}Press center{% elif language == 'en' %}Press center{% else %}Пресс-центр{% endif %}
+        </h1>
+        <div class="breadcrumb d-flex align-items-center">
+          <a href="{% url 'index' %}" class="text-uppercase text-white">{% if language == 'uz' %}Asosiy{% elif language == 'en' %}Home{% else %}Главный{% endif %}</a>
+          <div class="breadcrumb-line"></div>
+          <a href="#" class="text-uppercase text-white">{% if language == 'uz' %}press-center{% elif language == 'en' %}press center{% else %}пресс-центр{% endif %}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /SMALL BANNER -->
+
+  <!-- NEWS -->
+  <section class="news press py-3 py-md-5">
+    <div class="container">
+      <div class="press__list">
+        {% if press_center %}
+            <div class="row g-3">
+                {% for item in press_center %}
+                    <div class="col col-12 col-sm-6 col-lg-3">
+                        <a href="
+                        {% if press_center_1 %}
+                          {% url 'press_center_1_details' id=item.id %}
+                        {% else %}
+                          {% url 'press_center_2_details' id=item.id %}
+                        {% endif %}" class="press__card card">
+                        <img src="{{ MEDIA_URL }}{{ item.Image.url }}" class="card-img-top" alt="news-img">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.Name }}</h5>
+                            <p class="card-text"><small class="text-muted">{{ item.Date|date:"d.m.Y" }}</small></p>
+                        </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  <!-- /NEWS -->
+{% endblock content %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<!-- SMALL BANNER -->
+  <section class="small-banner">
+    <div class="small-banner__bg">
+      <img src="{% static 'img/about-us.jpg' %}" alt="banner-img">
+    </div>
+    <div class="small-banner__content">
+      <div class="container">
+        <h1 class="banner__carousel-title text-white">
+          {% if language == 'uz' %}Yuridik-jismoniy. shaxslar murojaati{% elif language == 'ru' %}Юридически-физ. обращение физических лиц{% else %}Legal-physical. individuals appeal{% endif %}
+        </h1>
+        <div class="breadcrumb d-flex align-items-center">
+          <a href="{% url 'index' %}" class="text-uppercase text-white">{% if language == 'uz' %}Asosiy{% elif language == 'ru' %}Главный{% else %}Main{% endif %}</a>
+          <div class="breadcrumb-line"></div>
+          <a href="#" class="text-uppercase text-white">{% if language == 'uz' %}Yuridik-jismoniy. shaxslar murojaati{% elif language == 'ru' %}Юридически-физ. обращение физических лиц{% else %}Legal-physical. individuals appeal{% endif %}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /SMALL BANNER -->
+
+  <!-- FEEDBACK FORM -->
+  <section class="feedback py-3 py-md-5">
+    <div class="container">
+      <form action="{% url 'feedback' %}" method="POST" class="feedback__form">
+        {% csrf_token %}
+        <div class="d-flex gap-3 my-2">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" value='L' name="flexRadioDefault" id="f-check1" checked>
+            <label class="form-check-label" for="f-check1">
+              {% if language == 'uz' %}Yuridik shaxslar{% elif language == 'ru' %}Юридические лица{% else %}Legal entities{% endif %}
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" value='I' name="flexRadioDefault" id="f-check2">
+            <label class="form-check-label" for="f-check2">
+              {% if language == 'uz' %}Jismoniy shaxslar{% elif language == 'ru' %}Физические лица{% else %}Individuals{% endif %}
+            </label>
+          </div>
+        </div>
+        <div class="row g-3">
+          <div class="col col-12">
+            <label for="f-name" class="form-label">{% if language == 'uz' %}FISH{% elif language == 'ru' %}РЫБЫ{% else %}FISH{% endif %}</label>
+            <input class="message__form-input" type="text" id="f-name" name="f-name">
+          </div>
+          <div class="col col-12">
+            <label for="f-date" class="form-label">{% if language == 'uz' %}Tug'ilgan sanasi{% elif language == 'ru' %}Дата рождения{% else %}Date of birth{% endif %}</label>
+            <input class="message__form-input" type="date" id="f-date" name="f-date">
+          </div>
+          <div class="col col-12">
+            <label for="f-pasId" class="form-label">{% if language == 'uz' %}Pasport seriyasi{% elif language == 'ru' %}Паспорт серии{% else %}Passport series{% endif %}</label>
+            <input class="message__form-input" type="text" id="f-pasId" name="f-pasId">
+          </div>
+          <div class="col col-12">
+            <label for="f-address" class="form-label">{% if language == 'uz' %}Manzil{% elif language == 'ru' %}Адрес{% else %}Address{% endif %}</label>
+            <input class="message__form-input" type="text" id="f-address" name="f-address">
+          </div>
+          <div class="col col-12">
+            <label for="f-index" class="form-label">{% if language == 'uz' %}Indeks{% elif language == 'ru' %}Индекс{% else %}Index{% endif %}</label>
+            <input class="message__form-input" type="text" id="f-index" name="f-index">
+          </div>
+          <div class="col col-12">
+            <label for="f-email" class="form-label">{% if language == 'uz' %}E-mail{% elif language == 'ru' %}Эл. почта{% else %}E-mail{% endif %}</label>
+            <input class="message__form-input" type="email" id="f-email" name="f-email">
+          </div>
+          <div class="col col-12">
+            <label for="f-phone" class="form-label">{% if language == 'uz' %}Telefon{% elif language == 'ru' %}телефон{% else %}Telephone{% endif %}</label>
+            <input class="message__form-input" type="text" id="f-phone" name="f-phone">
+          </div>
+          <div class="col col-12">
+            <label for="f-subject" class="form-label">{% if language == 'uz' %}Subyekt turi{% elif language == 'ru' %}Тип темы{% else %}Subject type{% endif %}</label>
+            <input class="message__form-input" type="text" id="f-subject" name="f-subject">
+          </div>
+          <div class="col col-12">
+            <label for="f-message" class="form-label">{% if language == 'uz' %}Savol matni{% elif language == 'ru' %}Текст вопроса{% else %}Question text{% endif %}</label>
+            <textarea class="message__form-input" name="f-message" rows="5"></textarea>
+          </div>
+          <div class="col col-12">
+            <button class="btn btn-primary banner__carousel-btn w-100" type="submit">{% if language == 'uz' %}Yuborish{% elif language == 'ru' %}Отправка{% else %}Sending{% endif %}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  <!-- /FEEDBACK FORM -->
+{% endblock content %}

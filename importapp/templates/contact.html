@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+  <!-- SMALL BANNER -->
+  <section class="small-banner">
+    <div class="small-banner__bg">
+      <img src="{% static 'img/about-us.jpg' %}" alt="banner-img">
+    </div>
+    <div class="small-banner__content">
+      <div class="container">
+        <h1 class="banner__carousel-title text-white">
+          {% if language == 'uz' %}Kontaktlar{% elif language == 'en' %}Contacts{% else %}Контакты{% endif %}
+        </h1>
+        <div class="breadcrumb d-flex align-items-center">
+          <a href="{% url 'index' %}" class="text-uppercase text-white">{% if language == 'uz' %}Asosiy{% elif language == 'en' %}Main{% else %}Главный{% endif %}</a>
+          <div class="breadcrumb-line"></div>
+          <a href="#" class="text-uppercase text-white">{% if language == 'uz' %}Kontaktlar{% elif language == 'en' %}Contacts{% else %}Контакты{% endif %}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /SMALL BANNER -->
+
+  <!-- CONTACT -->
+{% if contact %}
+  <section class="contact py-3 py-md-5">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col col-12 col-md-5">
+          <h2 class="section-subtitle">“Uwoodteams”</h2>
+          <div class="contact__item my-3">
+            <label class="contact__label mb-1 d-block">{% if language == 'uz' %}Manzil:{% elif language == 'en' %}Address:{% else %}Адрес:{% endif %}</label>
+            <p class="mb-0"><i class="me-3 fas fa-location-dot"></i>{{ contact.Location }}</p>
+          </div>
+          <div class="contact__item my-3">
+            <label class="contact__label mb-1 d-block">{% if language == 'uz' %}Elektron pochta:{% elif language == 'en' %}Email:{% else %}Эл. адрес:{% endif %}</label>
+            <a href="mailto:sales@use.uz"><i class="me-3 fas fa-envelope"></i>{{ contact.Email }}</a>
+          </div>
+          <div class="contact__item my-3">
+            <label class="contact__label mb-1 d-block">{% if language == 'uz' %}Telefon:{% elif language == 'en' %}Phone:{% else %}Телефон:{% endif %}</label>
+            <a href="tel:{{ contact.Phone }}" class="d-block my-1"><i class="me-3 fas fa-phone"></i>{{ contact.Phone }}</a>
+          </div>
+          <div class="contact__item my-3">
+            <label class="contact__label mb-1 d-block">{% if language == 'uz' %}Faks:{% elif language == 'en' %}Fax:{% else %}Факс:{% endif %}</label>
+            <a href="tel:{{ contact.Phone }}"><i class="me-3 fas fa-fax"></i>{{ contact.Phone }}</a>
+          </div>
+          <div class="contact__item my-3">
+            <label class="contact__label mb-1 d-block">{% if language == 'uz' %}Ish vaqti:{% elif language == 'en' %}Working hours:{% else %}Рабочее время:{% endif %}</label>
+            <p class="mb-0"><i class="me-3 fas fa-calendar-days"></i>{{ contact.Work_time }}</p>
+          </div>
+        </div>
+        <div class="col col-12 col-md-7">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <form action="{% url 'contact' %}" method='POST' class="message__form modal__form">
+                  {% csrf_token %}
+                  <div class="row g-3">
+                    <div class="col col-12 col-md-6">
+                      <label for="modal-name" class="form-label">{% if language == 'uz' %}Ism{% elif language == 'en' %}Name{% else %}Имя{% endif %}</label>
+                      <input class="message__form-input" type="text" id="modal-name" name="modal-name" required>
+                    </div>
+                    <div class="col col-12 col-md-6">
+                      <label for="modal-email" class="form-label">{% if language == 'uz' %}Elektron pochta{% elif language == 'en' %}Email{% else %}Эл. адрес{% endif %}</label>
+                      <input class="message__form-input" type="email" id="modal-email" name="modal-email" required>
+                    </div>
+                    <div class="col col-12 col-md-6">
+                      <label for="modal-organization" class="form-label">{% if language == 'uz' %}Tashkilot{% elif language == 'en' %}Organization{% else %}Организация{% endif %}</label>
+                      <input class="message__form-input" type="text" id="modal-organization" name="modal-organization"
+                        required>
+                    </div>
+                    <div class="col col-12 col-md-6">
+                      <label for="modal-phone" class="form-label">{% if language == 'uz' %}Telefon{% elif language == 'en' %}Telephone{% else %}телефон{% endif %}</label>
+                      <input class="message__form-input" type="text" id="modal-phone" name="modal-phone" required>
+                    </div>
+                    <div class="col col-12">
+                      <textarea class="message__form-input" name="modal-message" rows="5"
+                        placeholder="{% if language == 'uz' %}Xabar{% elif language == 'en' %}Message{% else %}Сообщение{% endif %}"></textarea>
+                    </div>
+                    <div class="col col-12">
+                      <button class="btn btn-primary banner__carousel-btn w-100" type="submit">{% if language == 'uz' %}Yuborish{% elif language == 'en' %}Sending{% else %}Отправка{% endif %}</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+  <!-- /CONTACT -->
+{% endblock content %}

@@ -1,0 +1,154 @@
+1 Xabar
+	Id
+	User
+	Token
+	Email
+	Phone
+	Message
+	Date
+	Checked
+2 Hamkor
+	Id
+	Image
+	Date
+3 Ish vakansiya
+	Id
+	Information
+	Status
+	Date
+4 Product_category_1
+	Id
+	Name
+	Date
+5 Product_category_2
+	Id
+	Type_1 --> Product_category_1
+	Name
+	Date
+6 Product
+	Id
+	Type_2 --> Product_category_2
+	Name
+	Image
+	Information
+	Date
+7 Contact
+	Id
+	Name
+	Email
+	Company
+	Phone
+	Message
+	Connected
+	Token
+	Date
+8 About us
+	Id
+	Name
+	Information
+	Image
+	Date
+9 Work
+	Id
+	Information
+	Position
+	Date
+10 Employee
+	Id
+	Name
+	Position
+	Email
+	Phone
+	Reception date
+11 Export
+	Id
+	Information
+	Date
+12 Import
+	Id
+	Information
+	Date
+13 Customs clearance
+	Id
+	Information
+	Date
+14 Outsourcing
+	Id
+	Information
+	Date
+15 Information disclosure
+	Id
+	Name
+	Image
+	Date
+16 Disclosure items
+	Id
+	Disclosure
+	Document
+	Date
+17 Shareholder
+	Id
+	Name
+	Image
+	Date
+18 Shareholder items
+	Id
+	Shareholder
+	Document
+	Date
+19 Internal documents of the company
+	Id
+	Name
+	Image
+	Date
+20 Internal documents items
+	Id
+	Internal documents
+	Document
+21 New
+	Id
+	Name
+	Image
+	Information
+	Date
+22 Press center 1
+	Id
+	Name
+	Image
+	Information
+	Date
+23 Press center 2
+	Id
+	Name
+	Image
+	Information
+	Date
+24 Appeal of legal
+	Id
+	Subject (Legal entities, Individual entities)
+	FullName
+	Birth date
+	PassportData
+	Address
+	Index
+	E-mail
+	Phone
+	Subject type
+	Question text
+	Token
+	Date
+25 Corruption
+	Id
+	Name
+	Information
+	Date
+
+
+models.CharField(verbose_name="", max_length=255)
+models.EmailField(verbose_name="", max_length=255, blank=True, null=True)
+models.TextField(verbose_name="")
+models.DateTimeField(verbose_name="", auto_now_add=True)
+models.BooleanField(verbose_name="", default=False)
+models.ImageField(verbose_name="", upload_to="Hamkor")
+models.ForeignKey(Product_category_1, on_delete=models.CASCADE)
+RichTextField(verbose_name="", field_settings='advanced')
