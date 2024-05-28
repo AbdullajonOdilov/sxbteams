@@ -196,9 +196,6 @@ JAZZMIN_SETTINGS = {
     "language_chooser": True,
 }
 
-from import_export.formats.base_formats import CSV, XLSX
-IMPORT_FORMATS = [CSV, XLSX]
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
