@@ -23,7 +23,6 @@ INSTALLED_APPS = [
     'modeltranslation',
     'jazzmin',
     'django.contrib.admin',
-    'import_export',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
