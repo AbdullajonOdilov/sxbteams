@@ -12,9 +12,9 @@ SECRET_KEY = 'django-insecure-i&7v9j___5g3mx23#myh07qvlsgjar&t%i$p-p^qok!9p6uu1@
 from django.utils.translation import gettext_lazy as _
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['odilovme.uz', 'www.odilovme.uz']
 
 
 # Application definition
@@ -283,8 +283,6 @@ MODELTRANSLATION_DEFAULT_LANGUAGE = 'uz'
 LOCALE_PATHS = (
     [BASE_DIR, 'locale/']
 )
-
-
 
 
 # AUTOTRANSLATE_TRANSLATOR_SERVICE = 'autotranslate.services.GoogleAPITranslatorService'
