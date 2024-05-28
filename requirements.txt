@@ -3,7 +3,6 @@ Django
 django-jazzmin
 django-autotranslate==1.2.0
 django-modeltranslation==0.18.4
-djangorestframework
 Pillow
 python-gettext
 requests
