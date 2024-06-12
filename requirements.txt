@@ -7,7 +7,7 @@ charset-normalizer
 click
 Deprecated
 diff-match-patch
-Django==4.1.1
+Django==5.0.3
 django-autotranslate
 django-ckeditor
 django-embed-video
