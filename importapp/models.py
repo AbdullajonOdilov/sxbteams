@@ -2,6 +2,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from django.utils.translation import gettext_lazy as _
 from phone_field import PhoneField
+from django.db.models import Sum
 
 
 class Xabar(models.Model):
@@ -64,11 +65,23 @@ class Product_category_2(models.Model):
         verbose_name_plural = 'B - 2-mahsulot kategoriyalari'
 
 
+class Product_image(models.Model):
+    Image = models.ImageField(verbose_name="Image", upload_to="product")
+    Date = models.DateTimeField(verbose_name="Date", auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.Date.strftime("%Y-%m-%d %H:%M:%S")}'
+
+    class Meta:
+        verbose_name = '3-Mahsulot rasmlari'
+        verbose_name_plural = 'B - 3-Mahsulot rasmlari'
+
+
 class Product(models.Model):
     Name = models.CharField(verbose_name="Name", max_length=255)
     Type_2 = models.ForeignKey(
         Product_category_2, verbose_name="Category", on_delete=models.CASCADE)
-    Image = models.ImageField(verbose_name="Image", upload_to="product")
+    Images = models.ManyToManyField(Product_image)
     Information = RichTextField(
         verbose_name="Information")
     Date = models.DateTimeField(verbose_name="Date", auto_now_add=True)
@@ -79,6 +92,43 @@ class Product(models.Model):
     class Meta:
         verbose_name = '3-mahsulot'
         verbose_name_plural = 'B - 3-mahsulot'
+
+
+class StatsImportExport(models.Model):
+    # MEASURE_CHOICES = [
+    #     ('kg', 'Kilogram'),
+    #     ('dona', 'Dona'),
+    #     ('metr', 'Meter'),
+    #     ('litr', 'Litre'),
+    #     ('tonna', 'Tonne'),
+    #     ('qop', 'Bag'),
+    # ]
+    type = models.CharField(max_length=7, choices=[('export', "Export"), ("import", "Import")])
+    product = models.ForeignKey(Product, verbose_name="Product name", on_delete=models.CASCADE)
+    measure = models.CharField(max_length=10, verbose_name="measure")
+    amount = models.FloatField(blank=True, null=True)
+    price = models.FloatField(blank=True, null=True)
+    summa = models.FloatField()
+    date = models.DateField(verbose_name="import date")
+    organisation = models.CharField(max_length=255, verbose_name="company name")
+    contract = models.FileField(upload_to="Contracts", blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.product__Name}, {self.organisation[:15]}"
+
+    @staticmethod
+    def get_total_sum(type, start_date, end_date, product=None):
+        query = StatsImportExport.objects.filter(
+            type=type,
+            date__range=[start_date, end_date]
+        )
+
+        if product:
+            query = query.filter(product=product)
+
+        total_sum = query.aggregate(Sum('summa'))['summa__sum']
+        return total_sum or 0
 
 
 class Contact(models.Model):

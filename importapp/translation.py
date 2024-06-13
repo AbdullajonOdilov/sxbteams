@@ -1,6 +1,7 @@
 from modeltranslation.translator import translator, TranslationOptions
-from .models import (Product_category_1, Product_category_2, Product, AboutUs, Work, Employee, Exsport, Import, CustomsClearance, Outsourcing,
-    New, PressCenter_1, PressCenter_2, Corruption, CompanyDetails)
+from .models import (Product_category_1, Product_category_2, Product, AboutUs, Work, Employee, Exsport, Import,
+                     CustomsClearance, Outsourcing,
+                     New, PressCenter_1, PressCenter_2, Corruption, CompanyDetails, Product_image)
 
 
 
@@ -21,6 +22,11 @@ class ProductTranslationOptions(TranslationOptions):
 
 translator.register(Product, ProductTranslationOptions)
 
+
+class Product_imageTranslationOptions(TranslationOptions):
+    pass
+
+translator.register(Product_image, Product_imageTranslationOptions)
 
 class AboutUsTranslationOptions(TranslationOptions):
     fields = ('Name', 'Information')

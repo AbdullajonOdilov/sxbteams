@@ -12,9 +12,9 @@ SECRET_KEY = 'django-insecure-i&7v9j___5g3mx23#myh07qvlsgjar&t%i$p-p^qok!9p6uu1@
 from django.utils.translation import gettext_lazy as _
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['www.odilovme.uz', 'odilovme.uz']
 
 
 # Application definition

@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import (Xabar, Hamkor, Product_category_1, Product_category_2, Product, Contact, AboutUs, Work, Employee,
                      Exsport, Import, CustomsClearance, Outsourcing,
                      New, PressCenter_1, PressCenter_2, AppealOfLegal, Corruption, CompanyDetails, Image, PhotoGallery,
-                     VideoGallery, Telegram)
+                     VideoGallery, Telegram, Product_image, StatsImportExport)
 from modeltranslation.admin import TranslationAdmin
 
 
@@ -39,11 +39,28 @@ admin.site.register(Product_category_2, Product_category_2Admin)
 
 
 class ProductAdmin(TranslationAdmin):
-    list_display = ['id', 'Name', 'Type_2', 'Image', 'Date']
+    list_display = ['id', 'Name', 'Type_2', 'display_images', 'Date']
     ordering = ('-Name',)
     search_fields = ('Name', 'Date')
 
+    def display_images(self, obj):
+        return ", ".join([image.Image.url for image in obj.Images.all()])
+
+    display_images.short_description = 'Images'
+
 admin.site.register(Product, ProductAdmin)
+
+class Product_imageAdmin(TranslationAdmin):
+    list_display = ('id', 'Date', 'Image')
+    ordering = ('-Date',)
+
+admin.site.register(Product_image, Product_imageAdmin)
+
+
+class StatsImportExportAdmin(admin.ModelAdmin):
+    list_filter = ('type', 'product', 'date')
+
+admin.site.register(StatsImportExport, StatsImportExportAdmin)
 
 
 class ContactAdmin(admin.ModelAdmin):
