@@ -14,7 +14,7 @@ from django.utils.translation import gettext_lazy as _
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.odilovme.uz', 'odilovme.uz']
+ALLOWED_HOSTS = ['www.odilovme.uz', 'odilovme.uz', 'beshagroeksport.uz']
 
 
 # Application definition
