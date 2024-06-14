@@ -75,11 +75,6 @@
 <header class="header py-1">
   <div class="container">
     <div class="header__top">
-      {% comment %} <marquee class="mb-1">
-        O'zbekiston Respublikasi Markaziy banki tomonidan belgilangan so'mga xorijiy valyuta kurslari 2022-09-09 USD =
-        10937.14 (26.13) EUR = 11154.79 (-82.46) RUB = 178.2 (-0.74) GBP = 13196.75 (-56.85) JPY = 81.97 (0.22) CHF =
-        11571.24 (-7.89) CNY = 1615.51 (-3.45)
-      </marquee> {% endcomment %}
     </div>
     <div class="header__middle d-flex justify-content-end mt-3">
       <div class="row align-items-center gap-2">
@@ -149,13 +144,12 @@
               <li><a class="dropdown-item" href="{% url 'employee' %}">{% if language == 'uz' %}Tashkilot boshqaruvi{% elif language == 'en' %}Organization management{% else %}Управление организацией{% endif %}</a></li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
+                  <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle txt-color1" href="#" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
               {% if language == 'uz' %}Import{% elif language == 'en' %}Import{% else %}Импорт{% endif %}
             </a>
-              {% if products_c_1 %}
-{#                  changed #}
+            {% if products_c_1 %}
               <ul class="dropdown-menu">
                 {% for product_c_1 in products_c_1 %}
                   {% if product_c_1.Type_of_product == 'I' %}
@@ -200,6 +194,8 @@
               </ul>
             {% endif %}
           </li>
+{##}
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle txt-color1" href="#" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">

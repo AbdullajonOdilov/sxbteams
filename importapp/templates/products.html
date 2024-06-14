@@ -63,7 +63,7 @@
             <div class="col col-12 col-md-4">
               <a class="services__item" href="{% url 'product_kategory_detail' id=product_c_2.id %}">
                 <div class="services__item-imgBx">
-                  <img src="{{ MEDIA_URL }}{{ product_c_2.Image.url }}" alt="services-img">
+                  <img src="{{ MEDIA_URL }}{{ product_c_2.Images.all.last.Image.url }}" alt="services-img">
                 </div>
                 <div class="services__item-content">
                   <h3 class="services__item-title text-center text-uppercase text-white">{{ product_c_2.Name }}</h3>

@@ -2,6 +2,10 @@
 {% load static %}
 {% load i18n %}
 {% block content %}
+
+  <!-- FANCYBOX CSS -->
+  <link rel="stylesheet" href="{% static 'css/fancybox.css' %}">
+
   <!-- SMALL BANNER -->
   <section class="small-banner">
     <div class="small-banner__bg">
@@ -31,12 +35,40 @@
   <section class="product-detail py-3 py-md-5">
     <div class="container">
       <div class="row g-3">
-        <div class="col col-12 col-md-4">
-          <div class="product-detail__img">
-            <img src="{{ MEDIA_URL }}{{ product.Image.url }}" alt="product-detail-img" class="img-fluid rounded">
+        <div class="col col-12 col-md-6 col-lg-4">
+          <div id="carouselExampleDark" class="carousel carousel-dark slide">
+            <div class="carousel-inner">
+              {% for image in product.Images.all reversed %}
+                <div class="carousel-item {% if image == product.Images.all.last %} active {% endif %}" data-bs-interval="2000">
+                  <a href="{{ MEDIA_URL }}{{ image.Image.url }}" data-fancybox="gallery">
+                    <img src="{{ MEDIA_URL }}{{ image.Image.url }}" alt="slider-img">
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+            <div class="carousel-wrapper">
+              <div class="carousel-indicators">
+              {% for image in product.Images.all reversed %}
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if image == product.Images.all.last %} active {% endif %}"
+                aria-current="true">
+                <img src="{{ MEDIA_URL }}{{ image.Image.url }}" alt="slider-btn">
+              </button>
+              {% endfor %}
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
         </div>
-        <div class="col col-12 col-md-8">
+        <div class="col col-12 col-md-6 col-lg-8">
           <div class="product-detail__content">
             {{ product.Information|safe }}
           </div>
@@ -45,4 +77,8 @@
     </div>
   </section>
   <!-- /PRODUCT DETAIL -->
+
+  <!-- FANCYBOX JS -->
+  <script src="{% static 'js/fancybox.umd.js' %}"></script>
+
 {% endblock content %}

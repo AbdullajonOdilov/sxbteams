@@ -95,14 +95,7 @@ class Product(models.Model):
 
 
 class StatsImportExport(models.Model):
-    # MEASURE_CHOICES = [
-    #     ('kg', 'Kilogram'),
-    #     ('dona', 'Dona'),
-    #     ('metr', 'Meter'),
-    #     ('litr', 'Litre'),
-    #     ('tonna', 'Tonne'),
-    #     ('qop', 'Bag'),
-    # ]
+
     type = models.CharField(max_length=7, choices=[('export', "Export"), ("import", "Import")])
     product = models.ForeignKey(Product, verbose_name="Product name", on_delete=models.CASCADE)
     measure = models.CharField(max_length=10, verbose_name="measure")
@@ -115,20 +108,10 @@ class StatsImportExport(models.Model):
     comment = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.product__Name}, {self.organisation[:15]}"
-
-    @staticmethod
-    def get_total_sum(type, start_date, end_date, product=None):
-        query = StatsImportExport.objects.filter(
-            type=type,
-            date__range=[start_date, end_date]
-        )
-
-        if product:
-            query = query.filter(product=product)
-
-        total_sum = query.aggregate(Sum('summa'))['summa__sum']
-        return total_sum or 0
+        return f"{self.product.Name}, {self.organisation[:15]}, summa={self.summa}"
+    class Meta:
+        verbose_name = 'Stats'
+        verbose_name_plural = 'A - Export and Import stats'
 
 
 class Contact(models.Model):
